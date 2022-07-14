@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <nav class="nav navbar-left">
+          <a><%= link_to 'Bookers', root_path, class: "navbar-brand" %></a>
+         </nav>
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+          <!-- ログイン状態の画面 -->
+            <li class="">
+              <%= link_to root_path, class: "nav-link text-light" do %> <!--ヘッダーHome-->
+                <i class="fas fa-home"></i> Home
+              <% end %>
+            </li>
+            <li class="">
+              <%= link_to users_path, class: "nav-link text-light" do %> <!--ヘッダーUsres-->
+                <i class="fas fa-users"></i> Users
+              <% end %>
+            </li>
+            <li class="">
+              <%= link_to books_path, class: "nav-link text-light" do %> <!--ヘッダーBooks-->
+                <i class="fas fa-book-open"></i> Books
+              <% end %>
+            </li>
+            <li class="">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %> <!--ヘッダーLog out-->
+                <i class="fas fa-sign-out-alt"></i> Log out
+              <% end %>
+            </li>
+          <% else %>
+            <!-- ログアウト状態の画面 -->
+            <li class="">
+              <%= link_to root_path, class: "nav-link text-light" do %> <!--ヘッダーHome-->
+                <i class="fas fa-home"></i> Home
+              <% end %>
+            </li>
+
+            <li class="">
+              <%= link_to about_path, class: "nav-link text-light" do %> <!--ヘッダーAbout-->
+                <i class="fas fa-link"></i> About
+              <% end %>
+            </li>
+
+            <li class="">
+              <%= link_to new_user_registration_path, class: "nav-link text-light" do %> <!--ヘッダーsign up-->
+                <i class="fas fa-user-plus"></i> Sign up
+              <% end %>
+            </li>
+
+            <li class="">
+              <%= link_to new_user_session_path, class: "nav-link text-light" do %> <!--ヘッダーLog in-->
+                <i class="fas fa-sign-in-alt"></i> Log in
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <%= yield %>
+</body>
