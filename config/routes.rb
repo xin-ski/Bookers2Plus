@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :books do
     resource :favorites, only: [:create, :destroy] #いいね機能についての追記
+    resources :book_comments, only: [:create, :destroy] #コメント機能についての追記
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
